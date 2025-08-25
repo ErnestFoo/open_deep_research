@@ -119,11 +119,11 @@ class Configuration(BaseModel):
     )
     # Model Configuration
     summarization_model: str = Field(
-        default="openai:gpt-4.1-mini",
+        default="bedrock_converse:meta.llama3-1-405b-instruct-v1:0",
         metadata={
             "x_oap_ui_config": {
                 "type": "text",
-                "default": "openai:gpt-4.1-mini",
+                "default": "bedrock_converse:meta.llama3-1-405b-instruct-v1:0",
                 "description": "Model for summarizing research results from Tavily search results"
             }
         }
@@ -151,21 +151,21 @@ class Configuration(BaseModel):
         }
     )
     research_model: str = Field(
-        default="openai:gpt-4.1",
+        default="bedrock_converse:meta.llama3-1-70b-instruct-v1:0",
         metadata={
             "x_oap_ui_config": {
                 "type": "text",
-                "default": "openai:gpt-4.1",
+                "default": "bedrock_converse:meta.llama3-1-70b-instruct-v1:0",
                 "description": "Model for conducting research. NOTE: Make sure your Researcher Model supports the selected search API."
             }
         }
     )
     research_model_max_tokens: int = Field(
-        default=10000,
+        default=8192,
         metadata={
             "x_oap_ui_config": {
                 "type": "number",
-                "default": 10000,
+                "default": 8192,
                 "description": "Maximum output tokens for research model"
             }
         }
@@ -175,13 +175,13 @@ class Configuration(BaseModel):
         metadata={
             "x_oap_ui_config": {
                 "type": "text",
-                "default": "openai:gpt-4.1",
+                "default": "bedrock:meta.llama3-1-70b-instruct-v1:0",
                 "description": "Model for compressing research findings from sub-agents. NOTE: Make sure your Compression Model supports the selected search API."
             }
         }
     )
     compression_model_max_tokens: int = Field(
-        default=8192,
+        default=10000,
         metadata={
             "x_oap_ui_config": {
                 "type": "number",
@@ -191,21 +191,21 @@ class Configuration(BaseModel):
         }
     )
     final_report_model: str = Field(
-        default="openai:gpt-4.1",
+        default="bedrock:meta.llama3-1-70b-instruct-v1:0",
         metadata={
             "x_oap_ui_config": {
                 "type": "text",
-                "default": "openai:gpt-4.1",
+                "default": "bedrock:meta.llama3-1-70b-instruct-v1:0",
                 "description": "Model for writing the final report from all research findings"
             }
         }
     )
     final_report_model_max_tokens: int = Field(
-        default=10000,
+        default=8192,
         metadata={
             "x_oap_ui_config": {
                 "type": "number",
-                "default": 10000,
+                "default": 8192,
                 "description": "Maximum output tokens for final report model"
             }
         }

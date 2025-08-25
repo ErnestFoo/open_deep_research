@@ -911,7 +911,29 @@ def get_api_key_for_model(model_name: str, config: RunnableConfig):
             return os.getenv("ANTHROPIC_API_KEY")
         elif model_name.startswith("google"):
             return os.getenv("GOOGLE_API_KEY")
+        elif model_name.startswith("bedrock:"):
+            return os.getenv("AWS_ACCESS_KEY_ID")
         return None
+
+def get_aws_access_key_for_model(model_name: str, config: RunnableConfig):
+    """Get AWS access key for a specific model from environment or config."""
+    if model_name.startswith("bedrock:"):
+        return os.getenv("AWS_ACCESS_KEY_ID")
+    if model_name.startswith("bedrock_converse:"):
+        return os.getenv("AWS_ACCESS_KEY_ID")
+    return None
+
+def get_secret_key_for_model(model_name:str, config: RunnableConfig):
+    """Get secret key for a specific model from environment or config."""
+    if model_name.startswith("bedrock:"):
+        return os.getenv("AWS_SECRET_ACCESS_KEY")
+    return None
+
+def get_region_for_model(model_name:str, config: RunnableConfig):
+    """Get region for a specific model from environment or config."""
+    if model_name.startswith("bedrock:"):
+        return os.getenv("AWS_REGION")
+    return None
 
 def get_tavily_api_key(config: RunnableConfig):
     """Get Tavily API key from environment or config."""
